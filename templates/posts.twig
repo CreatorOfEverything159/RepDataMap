@@ -1,0 +1,57 @@
+<div class="posts" style="overflow-y: scroll; max-height: 75%;">
+    {% if posts|length > 0 %}
+        {% for post in posts %}
+            <div id="{{ post.id }}" class="mb-2 card post">
+                <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-subtitle">{{ post.content }}</p>
+                    <div class="my-2">
+                        <form style="display: inline-block;" action="updatePostPage.php" method="post">
+                            <button type="submit"
+                                    class="btn"
+                                    style="color: green"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalAddPost"
+                                    data-bs-task="{{ post.title }}"
+                                    data-bs-deadline="{{ post.content }}"
+                                    data-bs-id="{{ post.id }}">Редактировать
+                            </button>
+                            <label>
+                                <input type="text"
+                                       name="id"
+                                       class="form-control visually-hidden"
+                                       value="{{ post.id }}">
+                            </label>
+                            <label>
+                                <input type="text"
+                                       name="title"
+                                       class="form-control visually-hidden"
+                                       value="{{ post.title }}">
+                            </label>
+                            <label>
+                                <input type="text"
+                                       name="content"
+                                       class="form-control visually-hidden"
+                                       value="{{ post.content }}">
+                            </label>
+                        </form>
+                        <form style="display: inline-block;" action="deletePost.php" method="post">
+                            <button type="submit"
+                                    style="color: red"
+                                    class="btn">Удалить
+                            </button>
+                            <label>
+                                <input type="text"
+                                       name="id"
+                                       class="form-control visually-hidden"
+                                       value="{{ post.id }}">
+                            </label>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="lead" style="font-size: 25px!important;">Пусто</p>
+    {% endif %}
+</div>

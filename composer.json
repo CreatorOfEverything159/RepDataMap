@@ -1,0 +1,12 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Post\\": "src/"
+        }
+    },
+    "require": {
+        "twig/twig": "^3.3",
+        "vlucas/phpdotenv": "^5.4",
+        "ext-pdo": "*"
+    }
+}
